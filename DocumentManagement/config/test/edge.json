@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "envConfig": {
-    "testing": {
+    "test": {
       "kvms": [
         {
           "name": "SF-KVM-RouteToTargetServer",
@@ -69,7 +69,7 @@
         "description": "Allows the consumer to access all resources of this API",
         "displayName": "DOCUMENT_MANAGEMENT_ALL",
         "environments": [
-          "testing"
+          "test"
         ],
         "name": "DOCUMENT_MANAGEMENT_ALL",
         "proxies": [
