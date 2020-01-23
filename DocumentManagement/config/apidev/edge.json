@@ -1,0 +1,98 @@
+{
+  "version": "2.0",
+  "envConfig": {
+    "dev": {
+      "kvms": [
+        {
+          "name": "SF-KVM-RouteToTargetServer",
+          "entry": [
+            {
+              "name": "DocumentManagement",
+              "value": "{\"TARGET_DEFAULT\": {\"TARGET_HOST\": \"apidev.com\",\"TARGET_PORT\": \"443\",\"TARGET_BASEPATH\": \"/tmf-api/documentManagement/v1\",\"TARGET_ENABLED\": true,\"TARGET_SSL_ENABLED\": true,\"TARGET_SSL_CIPHERS\": \"\",\"TARGET_SSL_CLIENT_AUTH_ENABLED\": false,\"TARGET_SSL_KEY_STORE\": \"ApiDevClientCert\",\"TARGET_SSL_KEY_ALIAS\": \"ApiDevClientCert\",\"TARGET_SSL_TRUST_STORE\": \"\",\"TARGET_SSL_PROTOCOLS\": \"TLSv1.1,TLSv1.2\",\"TARGET_SSL_IGNORE_VALIDATION_ERRORS\": \"false\"},\"TARGET_STUB\": {\"TARGET_HOST\": \"getsandbox.com\",\"TARGET_PORT\": \"80\",\"TARGET_BASEPATH\": \"targetBasepath\",\"TARGET_ENABLED\": true,\"TARGET_SSL_ENABLED\": true,\"TARGET_SSL_CIPHERS\": \"\",\"TARGET_SSL_CLIENT_AUTH_ENABLED\": false,\"TARGET_SSL_KEY_STORE\": \"ApiDevClientCert\",\"TARGET_SSL_KEY_ALIAS\": \"ApiDevClientCert\",\"TARGET_SSL_TRUST_STORE\": \"\",\"TARGET_SSL_PROTOCOLS\": \"\",\"TARGET_SSL_IGNORE_VALIDATION_ERRORS\": \"false\"}}"
+            }
+          ]
+        },
+        {
+          "name": "SF-KVM-apiScopes",
+          "entry": [
+            {
+              "name": "DocumentManagement",
+              "value": "DOCUMENT_MANAGEMENT_ALL"
+            }
+          ]
+        },
+        {
+          "name": "SF-KVM-ApiAllowedScopes",
+          "entry": [
+            {
+              "name": "DocumentManagement",
+              "value": "[{\"flowName\":\"listDocument\",\"allowedScopesList\":\"DOCUMENT_MANAGEMENT_ALL\"},{\"flowName\":\"createDocument\",\"allowedScopesList\":\"DOCUMENT_MANAGEMENT_ALL\"},{\"flowName\":\"retrieveDocument\",\"allowedScopesList\":\"DOCUMENT_MANAGEMENT_ALL\"},{\"flowName\":\"updateDocument\",\"allowedScopesList\":\"DOCUMENT_MANAGEMENT_ALL\"},{\"flowName\":\"registerListener\",\"allowedScopesList\":\"DOCUMENT_MANAGEMENT_ALL\"},{\"flowName\":\"unregisterListener\",\"allowedScopesList\":\"DOCUMENT_MANAGEMENT_ALL\"},{\"flowName\":\"listener\",\"allowedScopesList\":\"DOCUMENT_MANAGEMENT_ALL\"}]"
+            }
+          ]
+        },
+        {
+          "name": "SF-KVM-ValidateQueryParams",
+          "entry": [
+            {
+              "name": "DocumentManagement",
+              "value": "{}"
+            }
+          ]
+        },
+        {
+          "name": "SF-KVM-ValidateHeaders",
+          "entry": [
+            {
+              "name": "DocumentManagement",
+              "value": "{\"acceptValues\":[\"application/json\",\"*/*\",\"applcation/*\"],\"contentTypeValues\":[\"application/json\",\"application/json; charset=utf-8\"],\"contentTypePatchValues\":[\"application/json\"]}"
+            }
+          ]
+        }
+      ],
+      "targetServers": []
+    }
+  },
+  "orgConfig": {
+    "apiProducts": [
+      {
+        "apiResources": [
+          "/**",
+          "**"
+        ],
+        "approvalType": "auto",
+        "attributes": [
+          {
+            "name": "access",
+            "value": "public"
+          }
+        ],
+        "description": "Allows the consumer to access all resources of this API",
+        "displayName": "DOCUMENT_MANAGEMENT_ALL",
+        "environments": [
+          "dev"
+        ],
+        "name": "DOCUMENT_MANAGEMENT_ALL",
+        "proxies": [
+          "OAuth2ClientCredentials",
+          "DocumentManagement"
+        ]
+      }
+    ]
+  },
+  "apiConfig": {
+    "DocumentManagement": {
+      "maskconfigs": [
+        {
+          "name": "default",
+          "variables": [
+            "request.header.Authorization.values",
+            "request.header.Authorization",
+            "message.header.Authorization.values",
+            "access_token",
+            "apigee.access_token"
+          ]
+        }
+      ]
+    }
+  }
+}
